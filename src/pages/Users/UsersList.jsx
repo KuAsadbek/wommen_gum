@@ -112,14 +112,14 @@ export const UsersList = () => {
       {/* Page Title & Search Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Foydalanuvchilar</h1>
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">Foydalanuvchilar</h1>
           <p className="text-xs text-slate-400 mt-1">
             Dastur ishtirokchilarini boshqarish va kirish huquqlari
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="relative w-64">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <div className="relative w-full sm:w-64">
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
@@ -148,12 +148,12 @@ export const UsersList = () => {
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 uppercase tracking-wider font-semibold">
               <tr>
-                <th className="px-6 py-4">Foydalanuvchi</th>
-                <th className="px-6 py-4">Telefon</th>
-                <th className="px-6 py-4">Ko'rsatkichlar</th>
-                <th className="px-6 py-4">Rol</th>
-                <th className="px-6 py-4">Holat</th>
-                <th className="px-6 py-4 text-right">Amallar</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4">Foydalanuvchi</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">Telefon</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 hidden lg:table-cell">Ko'rsatkichlar</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">Rol</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4">Holat</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 text-right">Amallar</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -172,26 +172,26 @@ export const UsersList = () => {
               ) : (
                 users.map((u) => (
                   <tr key={u.id} className="hover:bg-slate-800/30 transition">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 font-bold flex items-center justify-center shrink-0">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 font-bold flex items-center justify-center shrink-0 text-xs sm:text-sm">
                           {u.first_name ? u.first_name[0] : u.email[0].toUpperCase()}
                         </div>
-                        <div>
-                          <p className="font-semibold text-slate-200">
+                        <div className="min-w-0">
+                          <p className="font-semibold text-slate-200 truncate">
                             {u.full_name || 'Ismsiz'}
                           </p>
-                          <p className="text-[11px] text-slate-400">{u.email}</p>
+                          <p className="text-[11px] text-slate-400 truncate">{u.email}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-slate-300">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-slate-300 hidden md:table-cell">
                       {u.phone || '—'}
                     </td>
-                    <td className="px-6 py-4 text-slate-300">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-slate-300 hidden lg:table-cell">
                       {u.weight ? `${u.weight} kg` : '—'} / {u.height ? `${u.height} sm` : '—'}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
                       <span
                         className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${
                           u.role === 'admin'
@@ -203,7 +203,7 @@ export const UsersList = () => {
                         {u.role === 'admin' ? 'Admin' : 'Foydalanuvchi'}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4">
                       <span
                         className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${
                           u.is_active
@@ -215,7 +215,7 @@ export const UsersList = () => {
                         {u.is_active ? 'Faol' : 'Bloklangan'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => handleOpenDetail(u)}
@@ -255,7 +255,7 @@ export const UsersList = () => {
         title={`Profil: ${selectedUser?.full_name || selectedUser?.email}`}
       >
         <div className="space-y-6">
-          <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-950/50 border border-slate-800 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-950/50 border border-slate-800 text-xs">
             <div>
               <span className="text-slate-400 block mb-1">Email:</span>
               <span className="font-semibold text-slate-200">{selectedUser?.email}</span>
@@ -314,7 +314,7 @@ export const UsersList = () => {
         title={`Tahrirlash: ${selectedUser?.email}`}
       >
         <form onSubmit={handleSaveEdit} className="space-y-4 text-xs">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-400 mb-1">Ism</label>
               <input
@@ -335,7 +335,7 @@ export const UsersList = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-400 mb-1">Telefon</label>
               <input
@@ -358,7 +358,7 @@ export const UsersList = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-400 mb-1">Vazn (kg)</label>
               <input

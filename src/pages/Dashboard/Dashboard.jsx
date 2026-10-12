@@ -75,15 +75,15 @@ export const Dashboard = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Boshqaruv paneli</h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">Boshqaruv paneli</h1>
+          <p className="text-[11px] sm:text-xs text-slate-400 mt-1">
             Foydalanuvchilar faolligi va Healty Gym Women T25 dasturi jarayoni sharhi
           </p>
         </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
-          <Calendar className="w-4 h-4 text-rose-400" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 self-start sm:self-auto">
+          <Calendar className="w-4 h-4 text-rose-400 shrink-0" />
           <span>{new Date().toLocaleDateString('uz-UZ', { dateStyle: 'long' })}</span>
         </div>
       </div>
@@ -154,16 +154,16 @@ export const Dashboard = () => {
       </div>
 
       {/* Charts section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Popular Workouts Bar Chart */}
-        <div className="lg:col-span-2 glass-panel p-6 rounded-3xl">
+        <div className="lg:col-span-2 glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-base font-bold text-white">Eng mashhur T25 mashg'ulotlari</h2>
               <p className="text-xs text-slate-400 mt-0.5">Yo'nalishlar bo'yicha boshlangan mashg'ulotlar soni</p>
             </div>
           </div>
-          <div className="h-72">
+          <div className="h-56 sm:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={popularData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <XAxis dataKey="name" stroke="#64748b" fontSize={12} tickLine={false} />
@@ -178,7 +178,7 @@ export const Dashboard = () => {
         </div>
 
         {/* Users by Phase Pie Chart */}
-        <div className="glass-panel p-6 rounded-3xl flex flex-col justify-between">
+        <div className="glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex flex-col justify-between">
           <div>
             <h2 className="text-base font-bold text-white">Bosqichlar bo'yicha taqsimot</h2>
             <p className="text-xs text-slate-400 mt-0.5">Alpha, Beta va Gamma darajalari</p>

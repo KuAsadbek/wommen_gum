@@ -127,7 +127,7 @@ export const WorkoutsList = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Dastur mashg'ulotlari</h1>
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">Dastur mashg'ulotlari</h1>
           <p className="text-xs text-slate-400 mt-1">
             T25 mashqlar majmuasi (har biri 25 daqiqa)
           </p>
@@ -143,7 +143,7 @@ export const WorkoutsList = () => {
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="relative w-64">
+        <div className="relative w-full sm:w-64">
           <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
@@ -174,7 +174,7 @@ export const WorkoutsList = () => {
           <div className="w-8 h-8 border-4 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {workouts.map((w) => (
             <div
               key={w.id}
@@ -240,7 +240,7 @@ export const WorkoutsList = () => {
         title={editingWorkout ? `Tahrirlash: ${editingWorkout.name}` : 'Yangi mashg\'ulot'}
       >
         <form onSubmit={handleSave} className="space-y-4 text-xs">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-400 mb-1">Mashg'ulot bosqichi</label>
               <select
@@ -280,7 +280,7 @@ export const WorkoutsList = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-400 mb-1">Davomiyligi (daq)</label>
               <input

@@ -192,7 +192,7 @@ export const ExercisesList = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Mashqlar</h1>
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">Mashqlar</h1>
           <p className="text-xs text-slate-400 mt-1">
             Mashqlar bazasi, vaqt me'yorlari va bajarish texnikasini boshqarish
           </p>
@@ -207,7 +207,7 @@ export const ExercisesList = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
         <select
           value={selectedWorkout}
           onChange={(e) => handleWorkoutChange(e.target.value)}
@@ -220,7 +220,7 @@ export const ExercisesList = () => {
           ))}
         </select>
 
-        <div className="relative w-64">
+        <div className="relative w-full sm:w-64">
           <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
@@ -238,12 +238,12 @@ export const ExercisesList = () => {
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 uppercase tracking-wider font-semibold">
               <tr>
-                <th className="px-6 py-4 w-16 text-center">Tartib</th>
-                <th className="px-6 py-4">Mashq</th>
-                <th className="px-6 py-4">Davomiyligi</th>
-                <th className="px-6 py-4">Dam olish</th>
-                <th className="px-6 py-4">Maslahatlar / Texnika</th>
-                <th className="px-6 py-4 text-right">Amallar</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 w-16 text-center hidden sm:table-cell">Tartib</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4">Mashq</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">Davomiyligi</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 hidden lg:table-cell">Dam olish</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 hidden lg:table-cell">Maslahatlar / Texnika</th>
+                <th className="px-4 sm:px-6 py-3 sm:py-4 text-right">Amallar</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -262,7 +262,7 @@ export const ExercisesList = () => {
               ) : (
                 exercises.map((ex, index) => (
                   <tr key={ex.id} className="hover:bg-slate-800/30 transition">
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-center hidden sm:table-cell">
                       <div className="flex items-center justify-center gap-1">
                         <span className="font-bold text-slate-300 mr-2">{index + 1}</span>
                         <div className="flex flex-col gap-0.5">
@@ -283,7 +283,7 @@ export const ExercisesList = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center overflow-hidden shrink-0">
                           {ex.image ? (
@@ -300,15 +300,15 @@ export const ExercisesList = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
                       <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20">
                         <Clock className="w-3 h-3" /> {ex.duration_seconds} son ({Math.round(ex.duration_seconds / 60)} daq)
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-slate-400">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-slate-400 hidden lg:table-cell">
                       {ex.rest_seconds > 0 ? `${ex.rest_seconds} son` : 'Dam olishsiz'}
                     </td>
-                    <td className="px-6 py-4 text-slate-300 max-w-xs truncate">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-slate-300 max-w-xs truncate hidden lg:table-cell">
                       {ex.tips ? (
                         <span className="flex items-center gap-1 text-[11px] text-amber-300/90">
                           <Lightbulb className="w-3.5 h-3.5 shrink-0 text-amber-400" />
@@ -318,7 +318,7 @@ export const ExercisesList = () => {
                         '—'
                       )}
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => handleOpenEdit(ex)}
@@ -377,7 +377,7 @@ export const ExercisesList = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-400 mb-1">Davomiyligi (soniyalarda)</label>
               <input

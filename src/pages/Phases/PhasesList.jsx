@@ -92,16 +92,16 @@ export const PhasesList = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Mashg'ulot bosqichlari</h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">Mashg'ulot bosqichlari</h1>
+          <p className="text-[11px] sm:text-xs text-slate-400 mt-1">
             Healty Gym Women T25 rivojlanish darajalari (Alpha → Beta → Gamma)
           </p>
         </div>
         <button
           onClick={handleOpenCreate}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-semibold text-xs shadow-lg shadow-rose-500/20 transition"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-semibold text-xs shadow-lg shadow-rose-500/20 transition self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" /> Bosqich qo'shish
         </button>
@@ -112,7 +112,7 @@ export const PhasesList = () => {
           <div className="w-8 h-8 border-4 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {phases.map((phase) => (
             <div
               key={phase.id}
